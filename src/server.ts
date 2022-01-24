@@ -7,6 +7,7 @@ import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import { graphqlUploadExpress } from "graphql-upload";
 import { typeDefs, resolvers } from "./schema";
+import { customAxios } from "./utils/axiosUtils";
 
 runServer();
 
@@ -19,7 +20,9 @@ async function runServer() {
     typeDefs,
     resolvers,
     context: (ctx) => {
-      return {};
+      return {
+        axios: customAxios,
+      };
     },
     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
   });

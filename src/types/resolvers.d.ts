@@ -1,4 +1,15 @@
-export type Resolver = (parent: any, args: any, context: any, info: any) => any;
+import { AxiosInstance } from "axios";
+
+interface Context {
+  axios: AxiosInstance;
+}
+
+export type Resolver = (
+  parent: any,
+  args: any,
+  context: Context,
+  info: any
+) => any;
 
 export interface Resolvers {
   [key: string]: {

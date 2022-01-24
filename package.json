@@ -25,6 +25,7 @@
     "@graphql-tools/merge": "^8.2.1",
     "apollo-server-core": "^3.6.2",
     "apollo-server-express": "^3.6.2",
+    "axios": "^0.25.0",
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
     "graphql": "^16.2.0",
