@@ -7,6 +7,7 @@
     "removeComments": true,
     "strict": true,
     "module": "CommonJS",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noImplicitAny": false
   }
 }
