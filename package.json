@@ -1,0 +1,17 @@
+{
+  "name": "coeather-api",
+  "version": "1.0.0",
+  "description": "Weather Graphql API Server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "graphql",
+    "api",
+    "server",
+    "weather"
+  ],
+  "author": "Codeliner <codeliner96@gmail.com>",
+  "license": "MIT"
+}
