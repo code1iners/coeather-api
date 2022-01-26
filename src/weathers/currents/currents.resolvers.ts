@@ -1,13 +1,30 @@
 import { Resolvers } from "../../types/resolvers";
+import { CurrentWeatherProps } from "../../types/weather.current";
 import { getWeatherRequestUri } from "../../utils/axiosUtils";
 
 const resolvers: Resolvers = {
   Query: {
-    weatherCurrent: async (_, { cityName, cityId }, { axios }) => {
+    weatherCurrent: async (
+      _,
+      {
+        cityName,
+        cityId,
+        latitude,
+        longitude,
+        zipCode,
+        units = "metric",
+        lang = "kr",
+      }: CurrentWeatherProps,
+      { axios }
+    ) => {
       try {
         const uri = getWeatherRequestUri({
           ...(cityName && { q: cityName }),
           ...(cityId && { id: cityId }),
+          ...(latitude && longitude && { lat: latitude, lon: longitude }),
+          ...(zipCode && { zip: zipCode }),
+          ...(units && { units }),
+          ...(lang && { lang }),
         });
 
         const { status, statusText, data } = await axios.get(`${uri}`);
