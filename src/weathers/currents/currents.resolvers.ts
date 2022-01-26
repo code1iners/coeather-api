@@ -1,15 +1,29 @@
 import { Resolvers } from "../../types/resolvers";
+import { getWeatherRequestUri } from "../../utils/axiosUtils";
 
 const resolvers: Resolvers = {
   Query: {
-    getCurrentByCityName: (_, { cityName }, { axios }) => {
+    getCurrentByCityName: async (_, { cityName }, { axios }) => {
       try {
+        const uri = getWeatherRequestUri({
+          q: cityName,
+        });
+
+        const { status, statusText, data } = await axios.get(`${uri}`);
+        // Request failed?
+        if (status !== 200) {
+          return {
+            ok: false,
+            error: {
+              code: status,
+              message: statusText,
+            },
+          };
+        }
+
         return {
-          ok: false,
-          error: {
-            code: 500,
-            message: "Net implement yet.",
-          },
+          ok: true,
+          data,
         };
       } catch (e) {
         console.error("[getCurrentByCityName]", e);

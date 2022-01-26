@@ -41,7 +41,7 @@ export default gql`
 
   type CurrentWeatherData {
     coord: WeatherCoord
-    weather: WeatherData
+    weather: [WeatherData]
     base: String
     main: WeatherMain
     visibility: Int
