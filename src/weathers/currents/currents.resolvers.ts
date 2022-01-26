@@ -3,10 +3,11 @@ import { getWeatherRequestUri } from "../../utils/axiosUtils";
 
 const resolvers: Resolvers = {
   Query: {
-    getCurrentByCityName: async (_, { cityName }, { axios }) => {
+    weatherCurrent: async (_, { cityName, cityId }, { axios }) => {
       try {
         const uri = getWeatherRequestUri({
-          q: cityName,
+          ...(cityName && { q: cityName }),
+          ...(cityId && { id: cityId }),
         });
 
         const { status, statusText, data } = await axios.get(`${uri}`);
