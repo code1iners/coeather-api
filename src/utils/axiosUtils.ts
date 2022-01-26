@@ -7,12 +7,11 @@ export const customAxios: AxiosInstance = axios.create({
   },
 });
 
-export const weatherBaseUri = "/weather";
-
 /**
  * ### Getting default weather request api uri with query string.
  */
-export const getWeatherRequestUri = (
+export const getRequestUri = (
+  endpoints: string,
   args: {} | undefined | null = null
 ): string => {
   const queryString = new URLSearchParams({
@@ -20,5 +19,5 @@ export const getWeatherRequestUri = (
     ...(args && { ...args }),
   });
 
-  return `${weatherBaseUri}?${queryString.toString()}`;
+  return `${endpoints}?${queryString.toString()}`;
 };

@@ -1,6 +1,6 @@
 import { Resolvers } from "../../types/resolvers";
 import { CurrentWeatherProps } from "../../types/weather.current";
-import { getWeatherRequestUri } from "../../utils/axiosUtils";
+import { getRequestUri } from "../../utils/axiosUtils";
 
 const resolvers: Resolvers = {
   Query: {
@@ -18,7 +18,7 @@ const resolvers: Resolvers = {
       { axios }
     ) => {
       try {
-        const uri = getWeatherRequestUri({
+        const uri = getRequestUri("weather", {
           ...(cityName && { q: cityName }),
           ...(cityId && { id: cityId }),
           ...(latitude && longitude && { lat: latitude, lon: longitude }),

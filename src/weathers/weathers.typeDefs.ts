@@ -1,6 +1,8 @@
 import { gql } from "apollo-server-core";
 
 export default gql`
+  # Current weather start.
+
   type WeatherCoord {
     lon: Float
     lat: Float
@@ -60,4 +62,97 @@ export default gql`
     error: SimpleError
     data: CurrentWeatherData
   }
+  # Current weather end.
+
+  # One call start.
+
+  type OneCallMinutely {
+    dt: Int
+    precipitation: Int
+  }
+
+  type OneCallMinutelyWeather {
+    id: Int
+    main: String
+    description: String
+    icon: String
+  }
+
+  type OneCallHourly {
+    dt: Int
+    temp: Float
+    fells_like: Float
+    pressure: Int
+    humidity: Int
+    dew_point: Float
+    uvi: Float
+    clouds: Int
+    visibility: Int
+    wind_speed: Float
+    wind_deg: Int
+    wind_gust: Float
+    weather: [OneCallMinutelyWeather]
+    pop: Int
+  }
+
+  type OneCallDailyTemp {
+    day: Float
+    min: Float
+    max: Float
+    night: Float
+    eve: Float
+    morn: Float
+  }
+
+  type OneCallDaliyFeelsLike {
+    day: Float
+    night: Float
+    eve: Float
+    morn: Float
+  }
+
+  type OneCallWeather {
+    id: Int
+    main: String
+    description: String
+    icon: String
+  }
+
+  type OneCallDaily {
+    dt: Int
+    sunrise: Int
+    sunset: Int
+    moonrise: Int
+    moonset: Int
+    moon_phase: Float
+    temp: OneCallDailyTemp
+    feels_like: OneCallDaliyFeelsLike
+    pressure: Int
+    humidity: Int
+    dew_point: Float
+    wind_speed: Float
+    wind_deg: Int
+    wind_gust: Float
+    weather: [OneCallWeather]
+    clouds: Int
+    pop: Float
+    uvi: Float
+  }
+
+  type OneCallData {
+    lat: Float
+    lon: Float
+    timezone: String
+    timezone_offset: Int
+    minutely: [OneCallMinutely]
+    hourly: [OneCallHourly]
+    daily: [OneCallDaily]
+  }
+
+  type OneCallResponse {
+    ok: Boolean!
+    error: SimpleError
+    data: OneCallData
+  }
+  # One call end.
 `;
