@@ -7,17 +7,19 @@ export const customAxios: AxiosInstance = axios.create({
   },
 });
 
+interface IRequestUriParameters {
+  endpoint: string;
+  queries: {} | undefined | null;
+}
+
 /**
  * ### Getting default weather request api uri with query string.
  */
-export const getRequestUri = (
-  endpoints: string,
-  args: {} | undefined | null = null
-): string => {
+export const getRequestUri = (params: IRequestUriParameters): string => {
   const queryString = new URLSearchParams({
     appid: String(process.env.OPEN_WEATHER_API_KEY),
-    ...(args && { ...args }),
+    ...(params.queries && { ...params.queries }),
   });
 
-  return `${endpoints}?${queryString.toString()}`;
+  return `${params.endpoint}?${queryString.toString()}`;
 };

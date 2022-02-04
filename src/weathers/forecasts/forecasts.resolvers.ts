@@ -1,19 +1,31 @@
 import { Resolvers } from "../../types/resolvers";
-import { OneCallProps } from "../../types/weather.oneCall";
+import { IForecastProps } from "../../types/weather.forecast";
 import { getRequestUri } from "../../utils/axiosUtils";
+import { ERROR_MESSAGE_FAILED_GETTING_WEATHER_KR } from "../../utils/constants";
 
 const resolvers: Resolvers = {
   Query: {
-    oneCall: async (
+    getForecastWeather: async (
       _,
-      { latitude, longitude, exclude = "current" }: OneCallProps,
+      {
+        latitude,
+        longitude,
+        exclude,
+        units = "metric",
+        lang = "kr",
+      }: IForecastProps,
       { axios }
     ) => {
       try {
-        const uri = getRequestUri("onecall", {
-          ...(latitude && { lat: latitude }),
-          ...(longitude && { lon: longitude }),
-          exclude,
+        const uri = getRequestUri({
+          endpoint: "onecall",
+          queries: {
+            ...(latitude && { lat: latitude }),
+            ...(longitude && { lon: longitude }),
+            ...(exclude && { exclude: exclude }),
+            units,
+            lang,
+          },
         });
 
         const { status, statusText, data } = await axios.get(uri);
@@ -23,8 +35,8 @@ const resolvers: Resolvers = {
           return {
             ok: false,
             error: {
-              code: 500,
-              message: "Not implement yet.",
+              code: status,
+              message: statusText,
             },
           };
         }
@@ -39,7 +51,7 @@ const resolvers: Resolvers = {
           ok: false,
           error: {
             code: 500,
-            message: "Failed getting weather information.",
+            message: ERROR_MESSAGE_FAILED_GETTING_WEATHER_KR,
           },
         };
       }

@@ -1,10 +1,11 @@
 import { Resolvers } from "../../types/resolvers";
-import { CurrentWeatherProps } from "../../types/weather.current";
+import { ICurrentWeatherProps } from "../../types/weather.current";
 import { getRequestUri } from "../../utils/axiosUtils";
+import { ERROR_MESSAGE_FAILED_GETTING_WEATHER_BY_CITY_NAME_KR } from "../../utils/constants";
 
 const resolvers: Resolvers = {
   Query: {
-    weatherCurrent: async (
+    getCurrentWeather: async (
       _,
       {
         cityName,
@@ -14,17 +15,20 @@ const resolvers: Resolvers = {
         zipCode,
         units = "metric",
         lang = "kr",
-      }: CurrentWeatherProps,
+      }: ICurrentWeatherProps,
       { axios }
     ) => {
       try {
-        const uri = getRequestUri("weather", {
-          ...(cityName && { q: cityName }),
-          ...(cityId && { id: cityId }),
-          ...(latitude && longitude && { lat: latitude, lon: longitude }),
-          ...(zipCode && { zip: zipCode }),
-          ...(units && { units }),
-          ...(lang && { lang }),
+        const uri = getRequestUri({
+          endpoint: "weather",
+          queries: {
+            ...(cityName && { q: cityName }),
+            ...(cityId && { id: cityId }),
+            ...(latitude && longitude && { lat: latitude, lon: longitude }),
+            ...(zipCode && { zip: zipCode }),
+            ...(units && { units }),
+            ...(lang && { lang }),
+          },
         });
 
         const { status, statusText, data } = await axios.get(`${uri}`);
@@ -49,7 +53,7 @@ const resolvers: Resolvers = {
           ok: false,
           error: {
             code: 500,
-            message: "Failed getting current weather by city name.",
+            message: ERROR_MESSAGE_FAILED_GETTING_WEATHER_BY_CITY_NAME_KR,
           },
         };
       }

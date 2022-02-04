@@ -66,6 +66,30 @@ export default gql`
 
   # One call start.
 
+  type OneCallCurrent {
+    dt: Int
+    sunrise: Int
+    sunset: Int
+    temp: Float
+    feels_like: Float
+    pressure: Int
+    humidity: Int
+    dew_point: Float
+    uvi: Float
+    clouds: Int
+    visibility: Int
+    wind_speed: Float
+    wind_deg: Int
+    weather: [OneCallCurrentWeather]
+  }
+
+  type OneCallCurrentWeather {
+    id: Int
+    main: String
+    description: String
+    icon: String
+  }
+
   type OneCallMinutely {
     dt: Int
     precipitation: Int
@@ -81,7 +105,7 @@ export default gql`
   type OneCallHourly {
     dt: Int
     temp: Float
-    fells_like: Float
+    feels_like: Float
     pressure: Int
     humidity: Int
     dew_point: Float
@@ -111,7 +135,7 @@ export default gql`
     morn: Float
   }
 
-  type OneCallWeather {
+  type OneCallDailyWeather {
     id: Int
     main: String
     description: String
@@ -133,7 +157,7 @@ export default gql`
     wind_speed: Float
     wind_deg: Int
     wind_gust: Float
-    weather: [OneCallWeather]
+    weather: [OneCallDailyWeather]
     clouds: Int
     pop: Float
     uvi: Float
@@ -144,6 +168,7 @@ export default gql`
     lon: Float
     timezone: String
     timezone_offset: Int
+    current: OneCallCurrent
     minutely: [OneCallMinutely]
     hourly: [OneCallHourly]
     daily: [OneCallDaily]

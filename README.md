@@ -12,7 +12,7 @@ Simple graphql weather api server.
 - [x] Getting weather by zip code.
 - [x] Current with some configurations which units & languages.
 
-## One call.
+## Current and forecast weather data.
 
-- [ ] Getting by geographic coordinates.
-- [ ] Getting with some configurations which units & languages.
+- [x] Getting by geographic coordinates.
+- [x] Getting with some configurations which units & languages.
