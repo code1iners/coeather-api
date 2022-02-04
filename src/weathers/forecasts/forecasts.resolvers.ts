@@ -1,5 +1,5 @@
 import { Resolvers } from "../../types/resolvers";
-import { IForecastProps } from "../../types/weather.forecast";
+import { IForecastProps } from "../../types/weathers";
 import { getRequestUri } from "../../utils/axiosUtils";
 import { ERROR_MESSAGE_FAILED_GETTING_WEATHER_KR } from "../../utils/constants";
 

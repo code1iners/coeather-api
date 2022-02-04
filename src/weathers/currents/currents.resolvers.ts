@@ -1,5 +1,5 @@
 import { Resolvers } from "../../types/resolvers";
-import { ICurrentWeatherProps } from "../../types/weather.current";
+import { ICurrentWeatherProps } from "../../types/weathers";
 import { getRequestUri } from "../../utils/axiosUtils";
 import { ERROR_MESSAGE_FAILED_GETTING_WEATHER_BY_CITY_NAME_KR } from "../../utils/constants";
 
@@ -26,8 +26,8 @@ const resolvers: Resolvers = {
             ...(cityId && { id: cityId }),
             ...(latitude && longitude && { lat: latitude, lon: longitude }),
             ...(zipCode && { zip: zipCode }),
-            ...(units && { units }),
-            ...(lang && { lang }),
+            units,
+            lang,
           },
         });
 

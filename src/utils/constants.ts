@@ -24,3 +24,17 @@ export const ERROR_MESSAGE_FAILED_GETTING_AIR_POLLUTION_KR: string =
   "대기 오염 정보를 가져오는데 실패했습니다.";
 
 // Air pollutions end.
+
+// Extra start.
+
+export const ERROR_MESSAGE_FAILED_GETTING_CITY_LIST_EN: string =
+  "Failed getting city name list information.";
+export const ERROR_MESSAGE_FAILED_GETTING_CITY_LIST_KR: string =
+  "도시명 목록을 가져오는데 실패했습니다.";
+
+export const ERROR_MESSAGE_FAILED_GETTING_COUNTRY_LIST_EN: string =
+  "Failed getting country list information.";
+export const ERROR_MESSAGE_FAILED_GETTING_COUNTRY_LIST_KR: string =
+  "국가 정보를 가져오는데 실패했습니다.";
+
+// Extra end.

@@ -1,5 +1,5 @@
 import { Resolvers } from "../../types/resolvers";
-import { IAirPollutionProps } from "../../types/weather.airPollution";
+import { IAirPollutionProps } from "../../types/weathers";
 import { getRequestUri } from "../../utils/axiosUtils";
 import { ERROR_MESSAGE_FAILED_GETTING_WEATHER_KR } from "../../utils/constants";
 

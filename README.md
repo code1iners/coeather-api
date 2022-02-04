@@ -19,4 +19,11 @@ Simple graphql weather api server.
 
 ## Forecast Air pollution.
 
-- [ ] Getting by geographic coordinates.
+- [x] Getting by geographic coordinates.
+
+## Extra.
+
+- [x] Getting cities by country code.
+- [x] Getting cities by city name.
+- [x] Getting countires only country field.
+- [x] Getting countires by country name.

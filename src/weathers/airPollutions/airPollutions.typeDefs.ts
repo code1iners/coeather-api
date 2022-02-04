@@ -13,18 +13,18 @@ export default gql`
   }
 
   type AirPollutionListMain {
-    aqi: Int
+    aqi: Int # 대기 질 지수 (1: 매우 좋음, 3: 보통, 5: 매우 나쁨)
   }
 
   type AirPollutionListComponent {
-    co: Float
-    no: Float
-    no2: Float
-    o3: Float
-    so2: Float
-    pm2_5: Float
-    pm10: Float
-    nh3: Float
+    co: Float # 일산화탄소
+    no: Float # 일산화질소
+    no2: Float # 이산화질소
+    o3: Float # 오존
+    so2: Float # 이산화황
+    pm2_5: Float # 미세 입자 물질
+    pm10: Float # 굵은 입자상 물질
+    nh3: Float # 암모니아
   }
 
   type AirPollutionData {
