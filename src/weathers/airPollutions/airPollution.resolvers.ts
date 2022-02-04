@@ -1,30 +1,23 @@
 import { Resolvers } from "../../types/resolvers";
-import { IForecastProps } from "../../types/weather.forecast";
+import { IAirPollutionProps } from "../../types/weather.airPollution";
 import { getRequestUri } from "../../utils/axiosUtils";
 import { ERROR_MESSAGE_FAILED_GETTING_WEATHER_KR } from "../../utils/constants";
 
 const resolvers: Resolvers = {
   Query: {
-    getForecastWeather: async (
+    getAirPollution: async (
       _,
-      {
-        latitude,
-        longitude,
-        exclude,
-        units = "metric",
-        lang = "kr",
-      }: IForecastProps,
+      { latitude, longitude, start, end }: IAirPollutionProps,
       { axios }
     ) => {
       try {
         const uri = getRequestUri({
-          endpoint: "onecall",
+          endpoint: "air_pollution/forecast",
           queries: {
-            ...(latitude && { lat: latitude }),
-            ...(longitude && { lon: longitude }),
-            ...(exclude && { exclude: exclude }),
-            units,
-            lang,
+            lat: latitude,
+            lon: longitude,
+            ...(start && { start }),
+            ...(end && { end }),
           },
         });
 
@@ -46,7 +39,6 @@ const resolvers: Resolvers = {
           data,
         };
       } catch (e) {
-        console.error("[getForecastWeather]", e);
         return {
           ok: false,
           error: {

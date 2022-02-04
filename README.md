@@ -16,3 +16,7 @@ Simple graphql weather api server.
 
 - [x] Getting by geographic coordinates.
 - [x] Getting with some configurations which units & languages.
+
+## Forecast Air pollution.
+
+- [ ] Getting by geographic coordinates.
