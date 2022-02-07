@@ -8,6 +8,7 @@ import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
 import { graphqlUploadExpress } from "graphql-upload";
 import { typeDefs, resolvers } from "./schema";
 import { customAxios } from "./utils/axiosUtils";
+import { buildSubgraphSchema } from "@apollo/subgraph";
 
 runServer();
 
@@ -15,10 +16,13 @@ async function runServer() {
   const port = process.env.PORT;
   const app = express();
 
-  const httpServer = http.createServer(app);
-  const apolloServer = new ApolloServer({
+  const schema = buildSubgraphSchema({
     typeDefs,
     resolvers,
+  });
+  const httpServer = http.createServer(app);
+  const apolloServer = new ApolloServer({
+    schema,
     context: (ctx) => {
       return {
         axios: customAxios,

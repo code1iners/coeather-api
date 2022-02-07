@@ -16,7 +16,7 @@ export default gql`
 
   type CitiesReponse {
     ok: Boolean!
-    error: SimpleError
+    error: CoeatherSimpleError
     data: [CityData]
   }
 

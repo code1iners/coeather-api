@@ -3,7 +3,7 @@ import { gql } from "apollo-server-core";
 export default gql`
   type CountriesResponse {
     ok: Boolean!
-    error: SimpleError
+    error: CoeatherSimpleError
     data: [String]
   }
 
@@ -22,7 +22,7 @@ export default gql`
 
   type FureCountriesResponse {
     ok: Boolean!
-    error: SimpleError
+    error: CoeatherSimpleError
     data: [FureCountriesData]
   }
 

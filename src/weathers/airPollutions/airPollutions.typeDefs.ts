@@ -34,7 +34,7 @@ export default gql`
 
   type AirPollutionResponse {
     ok: Boolean!
-    error: SimpleError
+    error: CoeatherSimpleError
     data: AirPollutionData
   }
 

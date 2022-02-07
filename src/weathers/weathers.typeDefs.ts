@@ -59,7 +59,7 @@ export default gql`
 
   type CurrentWeatherResponse {
     ok: Boolean!
-    error: SimpleError
+    error: CoeatherSimpleError
     data: CurrentWeatherData
   }
   # Current weather end.
@@ -176,7 +176,7 @@ export default gql`
 
   type OneCallResponse {
     ok: Boolean!
-    error: SimpleError
+    error: CoeatherSimpleError
     data: OneCallData
   }
   # One call end.
