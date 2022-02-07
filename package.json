@@ -4,7 +4,9 @@
   "description": "Weather Graphql API Server.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node ./src/server --ext ts,js --delay 1"
+    "dev": "nodemon --exec ts-node ./src/server --ext ts,js --delay 1",
+    "introspect:dev": "rover subgraph introspect http://localhost:3002/graphql > ./src/graphql/generated/schema.graphql",
+    "publish:dev": "rover subgraph publish cateway-production@current --name coeathers --routing-url http://localhost:3002/graphql --schema ./src/graphql/generated/schema.graphql"
   },
   "keywords": [
     "graphql",
