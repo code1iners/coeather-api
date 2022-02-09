@@ -7,7 +7,7 @@
     "dev": "nodemon --exec ts-node ./src/server --ext ts,js --delay 1",
     "introspect:dev": "rover subgraph introspect http://localhost:3002/graphql > ./src/graphql/generated/schema.graphql",
     "publish:dev": "rover subgraph publish cateway-production@current --name coeathers --routing-url http://localhost:3002/graphql --schema ./src/graphql/generated/schema.graphql",
-    "build": "tsc -p .",
+    "build": "tsc",
     "start": "node build/server"
   },
   "keywords": [
@@ -19,6 +19,8 @@
   "author": "Codeliner <codeliner96@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/graphql-upload": "^8.0.10",
+    "@types/morgan": "^1.9.3",
     "@types/node": "^17.0.10",
     "nodemon": "^2.0.15",
     "ts-node": "^10.4.0",

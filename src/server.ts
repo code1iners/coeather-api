@@ -19,6 +19,7 @@ import { initEnvironment } from "./utils/envUtils";
     typeDefs,
     resolvers,
   });
+
   const httpServer = http.createServer(app);
   const apolloServer = new ApolloServer({
     schema,
