@@ -1,5 +1,3 @@
-require("dotenv").config();
-
 import express from "express";
 import http from "http";
 import logger from "morgan";
@@ -9,10 +7,11 @@ import { graphqlUploadExpress } from "graphql-upload";
 import { typeDefs, resolvers } from "./schema";
 import { customAxios } from "./utils/axiosUtils";
 import { buildSubgraphSchema } from "@apollo/subgraph";
+import { initEnvironment } from "./utils/envUtils";
 
-runServer();
+(async () => {
+  initEnvironment();
 
-async function runServer() {
   const port = process.env.PORT;
   const app = express();
 
@@ -50,4 +49,4 @@ async function runServer() {
       `🚀 Server ready at http://localhost:${port}${apolloServer.graphqlPath}`
     );
   }
-}
+})();

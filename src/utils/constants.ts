@@ -38,3 +38,10 @@ export const ERROR_MESSAGE_FAILED_GETTING_COUNTRY_LIST_KR: string =
   "국가 정보를 가져오는데 실패했습니다.";
 
 // Extra end.
+
+// Environment start.
+
+export const DEVELOPMENT: string = "development";
+export const PRODUCTION: string = "production";
+
+// Environment end.
