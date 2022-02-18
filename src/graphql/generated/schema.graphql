@@ -4,7 +4,7 @@ type CoeatherSimpleError {
 }
 
 type Query {
-  CoeatherHello: String
+  coeatherHello: String
   getAirPollution(latitude: Float!, longitude: Float!, start: Int, end: Int): AirPollutionResponse!
   getCurrentWeather(cityName: String, cityId: String, latitude: String, longitude: String, zipCode: String, units: String, lang: String): CurrentWeatherResponse!
   getForecastWeather(latitude: Float!, longitude: Float!, exclude: String, units: String, lang: String): OneCallResponse!
